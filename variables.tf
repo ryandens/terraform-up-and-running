@@ -9,3 +9,9 @@ variable "alb_ingress_port" {
   type        = number
   default     = 80
 }
+
+variable "alb_name" {
+  description = "The name of the ALB"
+  type        = string
+  default     = "terraform-asg-example"
+}
