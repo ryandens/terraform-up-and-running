@@ -109,7 +109,7 @@ data "aws_subnet_ids" "default" {
 data "terraform_remote_state" "db" {
   backend = "s3"
 
-  config {
+  config = {
     bucket = "terrafrom-state-terraform-up-and-running"
     key    = "stage/data-stores/mysql/terraform.tfstate"
     region = "us-east-2"
