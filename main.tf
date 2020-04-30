@@ -132,9 +132,3 @@ resource "aws_security_group" "instance" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-
-variable "server_port" {
-  description = "The port the server will use for HTTP reqeuests"
-  type        = number
-  default     = 8080
-}
