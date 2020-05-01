@@ -1,3 +1,7 @@
 #!/bin/bash
-echo "Hello, World" > index.html
-nohup busybox httpd -f -p ${var.server_port} &
+cat > index.html <<EOF
+<h1>Hello, World</h1>
+<p>DB address: ${db_address}</p>
+<p>DB address: ${db_port}</p>
+EOF
+nohup busybox httpd -f -p ${server_port} &

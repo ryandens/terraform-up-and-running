@@ -17,7 +17,7 @@ resource "aws_launch_configuration" "example" {
   instance_type   = "t2.micro"
   security_groups = [aws_security_group.instance.id]
 
-  user_data = file("user-data.sh")
+  user_data = data.template_file.user_data.rendered
 
   lifecycle {
     create_before_destroy = true
@@ -97,6 +97,15 @@ resource "aws_lb_listener_rule" "asg" {
   }
 }
 
+data "template_file" "user_data" {
+  template = file("user-data.sh")
+
+  vars = {
+    server_port = var.server_port
+    db_address  = data.terraform_remote_state.db.outputs.address
+    db_port     = data.terraform_remote_state.db.outputs.port
+  }
+}
 
 data "aws_vpc" "default" {
   default = true
