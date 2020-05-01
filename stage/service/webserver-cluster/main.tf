@@ -10,4 +10,5 @@ module "webserver_cluster" {
   instance_type          = "t2.micro"
   max_size               = 10
   min_size               = 2
+  server_text            = "New server text"
 }
