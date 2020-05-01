@@ -2,12 +2,6 @@
 # REQUIRED PARAMETERS
 # You must provide a value for each of these parameters.
 # ---------------------------------------------------------------------------------------------------------------------
-
-variable "cluster_name" {
-  description = "The name to use for all the cluster resources"
-  type        = string
-}
-
 variable "db_remote_state_bucket" {
   description = "The name of the S3 bucket for the database's remote state"
   type        = string
@@ -20,6 +14,11 @@ variable "db_remote_state_key" {
 
 variable "instance_type" {
   description = "The type of EC2 Instances to run (e.g. t2.micro)"
+  type        = string
+}
+
+variable "environment" {
+  description = "The name of the environment we're deploying to"
   type        = string
 }
 
@@ -37,12 +36,6 @@ variable "max_size" {
 # OPTIONAL PARAMETERS
 # These parameters have reasonable defaults.
 # ---------------------------------------------------------------------------------------------------------------------
-variable "ami" {
-  description = "The AMI to run in the cluster"
-  default     = "ami-0c55b159cbfafe1f0"
-  type        = string
-}
-
 variable "server_text" {
   description = "The text the web server should return"
   default     = "Hello, World"
