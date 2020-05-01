@@ -9,7 +9,7 @@ terraform {
 }
 
 resource "aws_launch_configuration" "example" {
-  image_id        = "ami-0c55b159cbfafe1f0"
+  image_id        = var.ami
   instance_type   = var.instance_type
   security_groups = [aws_security_group.instance.id]
 
@@ -25,6 +25,7 @@ data "template_file" "user_data" {
 
   vars = {
     server_port = var.server_port
+    server_text = var.server_text
   }
 }
 
